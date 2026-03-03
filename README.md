@@ -1,94 +1,90 @@
-🚀 Intelligent Document Classification (NLP)
+## **Document Classification with NLP and Deep Learning**
 
-An End-to-End Natural Language Processing solution designed to automatically categorize documents into four strategic themes: Medicine, Space, Computer Graphics, and Automotive. Developed as part of the Master D3SI (Data Science and Information Systems Security) at Université Sultan Moulay Slimane.
+This project implements a Natural Language Processing (NLP) solution to classify textual documents into four thematic categories. By leveraging a 1D Convolutional Neural Network (CNN 1D) and an interactive interface, it allows for the rapid analysis of raw files, text files, or PDF documents.
 
-📌 Project Overview
+🚀 Project Overview
 
-This project implements a 1D Convolutional Neural Network (CNN) for text classification. Unlike traditional statistical models, this architecture captures local semantic patterns (n-grams), providing high performance with a balanced trade-off between complexity and computational cost.
+The objective is to build a classifier capable of distinguishing specific themes from unstructured documents. The project follows a complete pipeline: data cleaning, vectorization, deep learning model training, and deployment.
 
-Key Features:
+📊 Dataset
 
-Dual Format Support: Classifies both raw .txt files and .pdf reports.
+We use the "20 Newsgroups" dataset, a standard reference in NLP. For this project, we focus on 4 target classes:
 
-Interactive UI: A modern web interface built with Gradio for real-time predictions.
+Medicine (sci.med)
 
-Performance: Achieved ~83% accuracy on the test set using a curated subset of the 20 Newsgroups dataset.
+Space (sci.space)
 
-Preprocessing Pipeline: Full linguistic normalization (lower-casing, regex cleaning, and stop-word removal).
+Computer Graphics (comp.graphics)
 
-🛠️ Tech Stack
+Automobile (rec.autos)
 
-Deep Learning: TensorFlow / Keras (CNN 1D Architecture)
+🛠️ Project Steps
 
-Linguistics: NLTK (Stopwords), Regex
+1. Text Preprocessing
 
-Data Science: Scikit-Learn, Pandas, NumPy
+The raw text is cleaned via a custom function that performs:
 
-PDF Extraction: PyPDF
+Lowercasing.
 
-UI/Deployment: Gradio
+Removal of punctuation and special characters (Regex).
 
-Environment: Jupyter Notebook / Python 3.10+
+Elimination of stop words (Stopwords) via the NLTK library.
 
-📁 Repository Structure
+2. Text Representation (Word Embeddings)
 
-nlp-document-classification/
-├── data/                         # Test samples (.pdf and .txt)
-├── notebooks/                    
-│   └── document_classification.ipynb  # Full research, training, and evaluation
-├── src/                          
-│   └── app.py                    # Standalone Gradio application script
-├── rapport_mini_project_nlp.pdf  # Full academic report (French)
-├── requirements.txt              # List of dependencies
-└── README.md                     # Project documentation
+To transform the text into numerical data exploitable by the model:
+
+Tokenization: Creation of a 10,000-word vocabulary.
+
+Sequencing: Conversion of sentences into lists of integers.
+
+Padding: Standardization of document lengths to 200 words.
+
+3. Model Architecture (CNN 1D)
+
+The model uses a 1D convolutional neural network, which is effective for detecting local patterns in word sequences:
+
+Embedding Layer: Dimension of 100.
+
+1D Convolution: 128 filters with a kernel size of 5.
+
+Global Max Pooling: Extraction of the most important features.
+
+Dropout (0.5): To prevent overfitting.
+
+Dense: Final output layer with Softmax activation for the 4 classes.
+
+4. Evaluation
+
+The model achieves an accuracy of over 82% on the test set. Performance is visualized via:
+
+A classification report (Precision, Recall, F1-score).
+
+A confusion matrix to identify potential overlaps between classes.
+
+🌐 Deployment
+
+The project includes a deployment interface developed with Gradio. This interface allows the user to:
+
+Upload a .txt or .pdf file.
+
+Automatically extract text (using pypdf for PDFs).
+
+Instantly obtain the thematic prediction and associated confidence scores.
+
+📦 Installation
+
+To run this project locally, install the necessary dependencies:
+
+pip install numpy pandas matplotlib seaborn tensorflow nltk gradio pypdf
 
 
-🏗️ Model Architecture
+Then, launch the document_classification.ipynb notebook in your Jupyter environment.
 
-The CNN model consists of the following layers:
+📂 Repository Structure
 
-Embedding Layer: Maps 10,000 unique words into 100-dimensional dense vectors.
+notebooks/document_classification.ipynb: The complete development pipeline.
 
-1D Convolution Layer: 128 filters with a kernel size of 5 to detect local keywords.
+data/: Folder containing example PDF and TXT files to test the application.
 
-Global Max Pooling: Reduces dimensionality by keeping only the most significant features.
-
-Dropout (0.5): Prevents overfitting by randomly deactivating neurons during training.
-
-Softmax Output: Provides a probability distribution over the 4 classes.
-
-🚀 Installation & Usage
-
-1. Clone the repository
-
-git clone [https://github.com/your-username/nlp-document-classification.git](https://github.com/adnan-amrs/nlp-document-classification.git)
-cd nlp-document-classification
-
-
-2. Install dependencies
-
-pip install -r requirements.txt
-
-
-3. Run the Gradio App
-
-python src/app.py
-
-
-📊 Results
-
-The model shows strong robustness in distinguishing technical vocabularies. The confusion matrix indicates high precision in the sci.space and sci.med categories due to highly specific technical terms.
-
-🎓 Academic Context
-
-University: Université Sultan Moulay Slimane, Béni Mellal
-
-Program: Master Data Science et Sécurité des Systèmes d'information (D3SI)
-
-Student: Adnane AMROUSS
-
-Supervisor: Pr. ISMAIL KICH
-
-Academic Year: 2025-2026
-
-This project was completed as a Mini-Project for the Natural Language Processing (NLP) module.
+requirements.txt: List of Python dependencies.
