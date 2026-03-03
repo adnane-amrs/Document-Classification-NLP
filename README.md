@@ -1,4 +1,4 @@
-## **Document Classification with NLP and Deep Learning**
+# **Document Classification with NLP and Deep Learning**
 
 This project implements a Natural Language Processing (NLP) solution to classify textual documents into four thematic categories. By leveraging a 1D Convolutional Neural Network (CNN 1D) and an interactive interface, it allows for the rapid analysis of raw files, text files, or PDF documents.
 
@@ -17,7 +17,7 @@ We use the "20 Newsgroups" dataset, a standard reference in NLP. For this projec
 
 🛠️ Project Steps
 
-### 1. Text Preprocessing
+## 1. Text Preprocessing
 
 The raw text is cleaned via a custom function that performs:
 
@@ -25,7 +25,7 @@ The raw text is cleaned via a custom function that performs:
 - Removal of punctuation and special characters (Regex)  
 - Elimination of stop words (Stopwords) via the NLTK library  
 
-### 2. Text Representation (Word Embeddings)
+## 2. Text Representation (Word Embeddings)
 
 To transform the text into numerical data exploitable by the model:
 
@@ -33,7 +33,7 @@ To transform the text into numerical data exploitable by the model:
 - **Sequencing**: Conversion of sentences into lists of integers  
 - **Padding**: Standardization of document lengths to 200 words  
 
-### 3. Model Architecture (CNN 1D)
+## 3. Model Architecture (CNN 1D)
 
 The model uses a 1D convolutional neural network, which is effective for detecting local patterns in word sequences:
 
@@ -43,7 +43,7 @@ The model uses a 1D convolutional neural network, which is effective for detecti
 - **Dropout (0.5)**: To prevent overfitting  
 - **Dense**: Final output layer with Softmax activation for the 4 classes  
 
-### 4. Evaluation
+## 4. Evaluation
 
 The model achieves an accuracy of over **82%** on the test set. Performance is visualized via:
 
@@ -73,3 +73,4 @@ Then, launch the `document_classification.ipynb` notebook in your Jupyter enviro
 - `notebooks/document_classification.ipynb`: The complete development pipeline  
 - `data/`: Folder containing example PDF and TXT files to test the application  
 - `requirements.txt`: List of Python dependencies  
+
