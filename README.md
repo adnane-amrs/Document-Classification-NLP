@@ -112,9 +112,6 @@ project-root/
 │   ├── example1.pdf
 │   ├── example2.txt
 │
-├── images/
-│   └── deployment_screenshot.png
-│
 ├── requirements.txt
 └── README.md
 ```
@@ -145,3 +142,4 @@ project-root/
 ## 📜 License
 
 This project is for educational and research purposes.
+
